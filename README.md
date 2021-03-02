@@ -2,16 +2,17 @@
 
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
-![Workflow result](https://github.com/<OWNER>/<REPOSITORY>/workflows/Check/badge.svg)
+![Workflow result](https://github.com/kshailes/androidjetpackchallenge/workflows/Check/badge.svg)
 
 
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
-
+The app has static list of dogs and clicking on them creates new screen with details about dogs. I have used compose navigation (instead of creating new fragment).
 
 ## :bulb: Motivation and Context
 <!--- Optionally point readers to interesting parts of your submission. -->
 <!--- What are you especially proud of? -->
+This is the very first time I used Jetpack compose and compose navigation. I really liked navigation part as we do not require fragments now.
 
 
 ## :camera_flash: Screenshots
