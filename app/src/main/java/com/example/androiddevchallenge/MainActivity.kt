@@ -15,47 +15,29 @@
  */
 package com.example.androiddevchallenge
 
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.OnBackPressedDispatcher
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.drawable.toDrawable
 import androidx.navigation.NavController
-import androidx.navigation.compose.*
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 composable("dogList") {
                     LoadDogList(navController)
                 }
-                composable("dogDetail/{dogId}",arguments = listOf(navArgument("dog") {defaultValue = "dog"})) {navBackStackEntry->
+                composable("dogDetail/{dogId}", arguments = listOf(navArgument("dog") { defaultValue = "dog" })) { navBackStackEntry ->
                     LoadDogDetailScreen(navController, navBackStackEntry.arguments?.getString("dogId"))
                 }
             }
@@ -95,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     @Composable
     private fun LoadDogList(navController: NavController) {
         LazyColumn(modifier = Modifier.padding(16.dp)) {
-            items(listOfDogs) {dog ->
+            items(listOfDogs) { dog ->
                 Text(
                     dog.breed,
                     modifier = Modifier
@@ -106,7 +88,6 @@ class MainActivity : AppCompatActivity() {
                             navController.navigate("dogDetail/${dog.id}") {
 //                                popUpTo("dogList") {inclusive = true}
                             }
-
                         }
                 )
             }
@@ -114,14 +95,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Composable
-    private fun LoadDogDetailScreen( navController: NavController, dogId:String?) {
-        Column (modifier = Modifier.padding(16.dp)){
+    private fun LoadDogDetailScreen(navController: NavController, dogId: String?) {
+        Column(modifier = Modifier.padding(16.dp)) {
             val dog = listOfDogs.filter { it.id == dogId }.get(0)
             Text(dog.breed)
             Text(dog.details)
         }
     }
-
 
 //    @Composable
 //    fun loadPicture(url: String): Bitmap {
@@ -177,25 +157,25 @@ class MainActivity : AppCompatActivity() {
 }
 
 // Start building your app here!
-//@Composable
-//fun MyApp() {
+// @Composable
+// fun MyApp() {
 //    Surface(color = MaterialTheme.colors.background) {
 //        Text(text = "Ready... Set... GO!")
 //    }
-//}
+// }
 //
-//@Preview("Light Theme", widthDp = 360, heightDp = 640)
-//@Composable
-//fun LightPreview() {
+// @Preview("Light Theme", widthDp = 360, heightDp = 640)
+// @Composable
+// fun LightPreview() {
 //    MyTheme {
 //        MyApp()
 //    }
-//}
+// }
 //
-//@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-//@Composable
-//fun DarkPreview() {
+// @Preview("Dark Theme", widthDp = 360, heightDp = 640)
+// @Composable
+// fun DarkPreview() {
 //    MyTheme(darkTheme = true) {
 //        MyApp()
 //    }
-//}
+// }
