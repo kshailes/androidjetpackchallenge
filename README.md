@@ -1,5 +1,5 @@
 # Put title of your app here
-
+AndroidDevChallenge
 <!--- Replace <OWNER> with your Github Username and <REPOSITORY> with the name of your repository. -->
 <!--- You can find both of these in the url bar when you open your repository in github. -->
 ![Workflow result](https://github.com/kshailes/androidjetpackchallenge/workflows/Check/badge.svg)
